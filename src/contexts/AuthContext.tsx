@@ -3,7 +3,7 @@ import { createContext, ReactNode, useState } from "react"
 import UsuarioLogin from "../models/UsuarioLogin"
 import { login } from "../services/Service"
 import { toastAlerta } from "../utils/toastAlerta"
-// import { toastAlerta } from "../utils/toastAlerta"
+
 
 interface AuthContextProps {
     usuario: UsuarioLogin
@@ -31,10 +31,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     const [isLoading, setIsLoading] = useState(false)
 
-    async function handleLogin(userLogin: UsuarioLogin) {
+    async function handleLogin(usuarioLogin: UsuarioLogin) {
         setIsLoading(true)
         try {
-            await login(`/usuarios/logar`, userLogin, setUsuario)
+            await login(`/usuarios/logar`, usuarioLogin, setUsuario)
             toastAlerta('Você precisa estar logado', 'info');
             setIsLoading(false)
 
